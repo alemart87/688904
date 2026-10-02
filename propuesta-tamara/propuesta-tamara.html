@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta de gestión de redes sociales · Market Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Montserrat incluida localmente (fuente variable, pesos 300-700) para que el PDF se vea igual sin conexión. */
+  @font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("fonts/Montserrat-Variable.woff2") format("woff2");
+  }
+
+  :root {
+    --ink: #111111;
+    --gray-1: #4a4a4a;
+    --gray-2: #7a7a7a;
+    --gray-3: #b5b5b5;
+    --line: #e2e2e2;
+    --box: #f6f6f6;
+    --paper: #ffffff;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ececec;
+    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    margin: 12mm auto;
+    padding: 20mm 20mm 18mm 20mm;
+    background: var(--paper);
+    box-shadow: 0 2px 18px rgba(0,0,0,.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- Header ---------- */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 6mm;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; min-height: 14mm; }
+  .brand img { display: block; height: 14mm; width: auto; max-width: 60mm; object-fit: contain; }
+  .brand .wordmark {
+    display: none;
+    font-weight: 700;
+    font-size: 13pt;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .brand .wordmark span { font-weight: 300; }
+
+  .meta {
+    text-align: right;
+    font-size: 8.5pt;
+    color: var(--gray-2);
+    line-height: 1.6;
+  }
+  .meta .for { color: var(--ink); font-weight: 500; }
+  .meta .pending { color: var(--gray-3); font-weight: 400; }
+
+  /* ---------- Title ---------- */
+  .title-block { margin: 10mm 0 9mm; }
+  h1 {
+    margin: 0 0 2.5mm;
+    font-size: 21pt;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+  }
+  .subtitle {
+    margin: 0;
+    font-size: 10.5pt;
+    font-weight: 300;
+    color: var(--gray-1);
+    letter-spacing: .01em;
+  }
+
+  /* ---------- Sections ---------- */
+  section { margin-bottom: 8mm; }
+  section:last-of-type { margin-bottom: 0; }
+
+  h2 {
+    margin: 0 0 3.5mm;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gray-2);
+  }
+
+  p {
+    margin: 0;
+    font-size: 10pt;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .lead { font-size: 11pt; font-weight: 300; line-height: 1.65; max-width: 150mm; }
+
+  /* Services grid */
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10mm;
+    row-gap: 5.5mm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .services li {
+    position: relative;
+    padding-left: 6mm;
+    font-size: 9.4pt;
+    line-height: 1.55;
+    color: var(--gray-1);
+  }
+  .services li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .55em;
+    width: 3mm;
+    height: 1px;
+    background: var(--ink);
+  }
+  .services b {
+    display: block;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .6mm;
+  }
+
+  /* Investment */
+  .price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 5mm;
+    flex-wrap: wrap;
+  }
+  .price {
+    font-size: 32pt;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 1;
+  }
+  .price small {
+    font-size: 11pt;
+    font-weight: 300;
+    color: var(--gray-2);
+    letter-spacing: 0;
+    margin-left: 1mm;
+  }
+  .price-note {
+    margin-top: 3mm;
+    font-size: 9.5pt;
+    color: var(--gray-1);
+  }
+
+  /* Ad budget box */
+  .box {
+    border: 1px solid var(--line);
+    background: var(--box);
+    padding: 6.5mm 7mm;
+  }
+  .box h3 {
+    margin: 0 0 2.5mm;
+    font-size: 9.5pt;
+    font-weight: 600;
+  }
+  .box p { font-size: 9.5pt; line-height: 1.6; color: var(--gray-1); }
+  .box p + p { margin-top: 2mm; }
+  .box strong { font-weight: 600; color: var(--ink); }
+
+  /* Two-column block for work method + scope */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12mm;
+  }
+  .two-col p { font-size: 9.6pt; color: var(--gray-1); }
+
+  /* Footer */
+  .footer {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: var(--gray-3);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .page-2 section { margin-bottom: 11mm; }
+  .page-2 .title-block { margin: 12mm 0 11mm; }
+
+  .closing {
+    font-size: 9.5pt;
+    color: var(--gray-2);
+    font-weight: 300;
+  }
+
+  /* ---------- Print ---------- */
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: #fff; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+    }
+    .page:last-child { page-break-after: auto; break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PÁGINA 1 ============================ -->
+<div class="page">
+  <header class="header">
+    <div class="brand">
+      <!-- Colocá el logo como "logo-marketlabs.png" en esta misma carpeta. Si no se encuentra, se muestra el texto. -->
+      <img src="logo-marketlabs.png" alt="Market Labs"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="wordmark">Market <span>Labs</span></div>
+    </div>
+    <div class="meta">
+      <div class="for">Preparada para Tamara <span class="pending">[Apellido]</span></div>
+      <div>Instagram · Facebook</div>
+      <div>Octubre 2026</div>
+    </div>
+  </header>
+
+  <div class="title-block">
+    <h1>Propuesta de gestión de redes sociales</h1>
+    <p class="subtitle">Contenido, presencia digital y publicidad para tu marca personal</p>
+  </div>
+
+  <section>
+    <h2>Objetivo</h2>
+    <p class="lead">Fortalecer tu presencia digital con contenido que refleje tu identidad artística, muestre tu obra y te permita conectar con nuevas audiencias.</p>
+  </section>
+
+  <section>
+    <h2>Servicios incluidos</h2>
+    <ul class="services">
+      <li>
+        <b>Planificación de contenidos</b>
+        Calendario de publicaciones con hasta 2 entregas al mes.
+      </li>
+      <li>
+        <b>Publicaciones para el feed</b>
+        Hasta 12 al mes, habitualmente 3 por semana, combinando imágenes, carruseles y videos según el material disponible.
+      </li>
+      <li>
+        <b>Diseño de piezas</b>
+        Adaptación de fotografías y materiales proporcionados por la cliente, respetando su identidad visual.
+      </li>
+      <li>
+        <b>Edición básica de videos cortos</b>
+        Hasta 4 al mes con material entregado por la cliente: cortes, ajustes sencillos, textos y música. Forman parte de las 12 publicaciones mensuales.
+      </li>
+      <li>
+        <b>Historias</b>
+        Hasta 10 al mes, adaptadas al contenido y material disponible.
+      </li>
+      <li>
+        <b>Redacción, programación y publicación</b>
+        De los contenidos aprobados en Instagram y Facebook. Las cantidades corresponden al total de piezas, que podrán compartirse o adaptarse entre ambas redes.
+      </li>
+      <li>
+        <b>Publicidad en Meta</b>
+        Planificación, configuración, segmentación, activación y seguimiento de campañas.
+      </li>
+      <li>
+        <b>Resumen mensual</b>
+        Informe sencillo con los resultados del mes.
+      </li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <span>Market Labs</span>
+    <span>1 / 2</span>
+  </footer>
+</div>
+
+<!-- ============================ PÁGINA 2 ============================ -->
+<div class="page page-2">
+  <header class="header">
+    <div class="brand">
+      <img src="logo-marketlabs.png" alt="Market Labs"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="wordmark">Market <span>Labs</span></div>
+    </div>
+    <div class="meta">
+      <div class="for">Propuesta de gestión de redes sociales</div>
+      <div>Tamara <span class="pending">[Apellido]</span></div>
+    </div>
+  </header>
+
+  <div class="title-block">
+    <h2 style="margin-bottom:4mm">Inversión mensual</h2>
+    <div class="price-block">
+      <div class="price">G. 750.000<small>/ mes</small></div>
+    </div>
+    <p class="price-note">Incluye la gestión de contenidos y la gestión de campañas publicitarias.</p>
+  </div>
+
+  <section>
+    <h2>Presupuesto publicitario</h2>
+    <div class="box">
+      <h3>La inversión en anuncios no está incluida en el honorario mensual.</h3>
+      <p>Tamara define y aprueba el monto que desea invertir en Meta, con orientación de Market Labs según sus objetivos de alcance y visibilidad. Ese importe se paga por separado a Meta.</p>
+      <p><strong>La gestión de las campañas sí está incluida</strong> en el servicio mensual. El alcance obtenido dependerá del presupuesto, la audiencia y el desempeño de los anuncios.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="two-col">
+      <div>
+        <h2>Forma de trabajo</h2>
+        <p>La cliente proporciona fotografías, videos e información sobre sus obras, actividades y novedades. Market Labs organiza, diseña y adapta el contenido, y lo presenta para su aprobación antes de publicarlo.</p>
+      </div>
+      <div>
+        <h2>Alcance</h2>
+        <p>No incluye sesiones fotográficas, filmaciones, edición audiovisual avanzada ni atención diaria de mensajes y comentarios. Los contenidos o trabajos adicionales se cotizan por separado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="closing">Quedamos a disposición para conversar sobre esta propuesta y ajustarla a lo que necesites.</p>
+  </section>
+
+  <footer class="footer">
+    <span>Market Labs</span>
+    <span>2 / 2</span>
+  </footer>
+</div>
+
+</body>
+</html>
