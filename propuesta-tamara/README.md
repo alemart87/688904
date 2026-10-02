@@ -1,4 +1,4 @@
-# Propuesta de gestión de redes sociales · Tamara
+# Propuesta de gestión de redes sociales · Tamara Raimondo
 
 Propuesta comercial de Market Labs, diseñada en dos páginas A4.
 
@@ -25,7 +25,6 @@ Abrí `propuesta-tamara.html` en Chrome o Edge y usá **Imprimir → Guardar com
 El paginado ya está definido en el archivo: la primera página contiene objetivo y servicios;
 la segunda, inversión, presupuesto publicitario, forma de trabajo y alcance.
 
-## Pendientes antes de enviar
+## Pendiente antes de enviar
 
-- Confirmar el apellido de Tamara y reemplazar el campo `[Apellido]` en el encabezado de ambas páginas.
 - Agregar el logo definitivo (ver arriba).
